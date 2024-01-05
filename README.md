@@ -1,1 +1,1 @@
-# get-hands-dirty-with-TypeScript
+# get-hands-dirty-with-TypeScript from scratch 
