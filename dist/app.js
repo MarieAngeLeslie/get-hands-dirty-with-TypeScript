@@ -1,23 +1,34 @@
 "use strict";
-const user = { firstname: "ashraf", lastname: "akimi" };
-function identity(arg) {
-    return arg;
+function reverse(arg) {
+    return [...arg].reverse();
 }
-//Type extends { length: number } : doit étendre d'un objet qui contiendrais une clé length qui serait de type number
-function consoleSize(arg) {
-    console.log(arg.length);
-    return arg;
-}
-const logSize = consoleSize("t");
-const identityVariable = identity(3);
-const compteur = document.querySelector('#compteur');
-let i = 0;
-const increment = (e) => {
-    e.preventDefault();
-    i++;
-    const span = compteur === null || compteur === void 0 ? void 0 : compteur.querySelector("span");
-    if (span) {
-        span.innerText = i.toString();
+class Collection {
+    constructor(items) {
+        this.items = items;
     }
-};
-compteur === null || compteur === void 0 ? void 0 : compteur.addEventListener('click', increment);
+    add(item) {
+        this.items.push(item);
+        return this;
+    }
+    first() {
+        return this.items[0] || null;
+    }
+}
+class Point {
+    constructor() {
+        this.x = 0;
+        this.y = 0;
+    }
+}
+class Geometry {
+    constructor() {
+        this.x = 0;
+        this.y = 0;
+        this.surface = 0;
+    }
+}
+function getX(p) {
+    return p.x;
+}
+const my_instance = new Collection([1, 2,]);
+my_instance.first();

@@ -1,36 +1,39 @@
-type User = { firstname: string, lastname: string }
-type IdentityType<ArgType> = (arg: ArgType) => ArgType
-
-const user: User = { firstname: "ashraf", lastname: "akimi" }
-
-function identity<ArgType>(arg: ArgType): ArgType {
-    return arg;
+function reverse<T>(arg: readonly T[]): T[] {
+    return [...arg].reverse();
 }
 
+class Collection<T> {
+    constructor(private items: Array<T>) {
 
+    }
 
-//Type extends { length: number } : doit étendre d'un objet qui contiendrais une clé length qui serait de type number
-function consoleSize<Type extends { length: number }>(arg: Type): Type {
-    console.log(arg.length);
-    return arg;
-}
+    add(item: T): this {
+        this.items.push(item);
+        return this
+    }
 
-const logSize = consoleSize("t");
-
-const identityVariable = identity(3);
-
-const compteur = document.querySelector('#compteur');
-let i = 0;
-
-const increment = (e: Event) => {
-    e.preventDefault();
-    i++;
-    const span = compteur?.querySelector("span");
-    if (span) {
-        span.innerText = i.toString();
+    first(): T | null {
+        return this.items[0] || null;
     }
 }
 
 
+class Point {
+    x = 0;
+    y = 0;
+}
 
-compteur?.addEventListener('click', increment)
+class Geometry {
+    x = 0;
+    y = 0;
+    surface = 0;
+}
+
+function getX(p: Point) {
+    return p.x;
+}
+
+
+
+const my_instance = new Collection([1, 2,]);
+my_instance.first();
